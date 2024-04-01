@@ -1,7 +1,8 @@
-# fiap-arquitetura-desenvolvimento-java FASE-01
+# FIAP Arquitetura e Desenvolvimento em Java 
+## FASE-01
 
-O QUE VEM POR AÍ?
-  Mergulhando em DDD
-  Conceitos de Java e Orientação a Objetos
-  Controle de versão
-  Spring I
+**O QUE VEM POR AÍ?**
+  1. Mergulhando em DDD
+  2. Conceitos de Java e Orientação a Objetos
+  3. Controle de versão
+  4. Spring I
