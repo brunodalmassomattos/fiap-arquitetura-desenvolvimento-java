@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: pet-tech
+  profiles:
+    active: dev
