@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -22,7 +21,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Produto>> findById(@PathVariable UUID id) {
+    public ResponseEntity<Produto> findById(@PathVariable UUID id) {
         return ResponseEntity.ok(produtoService.findById(id));
     }
 
