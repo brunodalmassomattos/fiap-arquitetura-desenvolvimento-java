@@ -1,0 +1,1 @@
+insert into users(id, name, email, password) values('cffcb587-e465-4d36-ae40-c7db920bf725', 'Bruno', 'bruno@email.com', '123456')
