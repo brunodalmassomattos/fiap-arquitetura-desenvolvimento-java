@@ -3,6 +3,7 @@ package br.com.fiap.apiredesocial.domain.post;
 import br.com.fiap.apiredesocial.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,9 +12,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "posts")
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Post {
 
     @Id

@@ -14,7 +14,7 @@ public class UserService {
 
     public UserDTO save(User userRequest) {
         User save = this.userRepository.save(userRequest);
-        return new UserDTO(save.getName(), save.getEmail(), save.getPassword());
+        return new UserDTO(save.getId(), save.getName(), save.getEmail(), save.getPassword());
     }
 
 }
