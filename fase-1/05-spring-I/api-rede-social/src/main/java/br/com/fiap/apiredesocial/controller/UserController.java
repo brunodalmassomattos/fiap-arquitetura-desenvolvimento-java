@@ -19,8 +19,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserDTO> user(@RequestBody UserDTO userDTO) {
-        var user = this.userService.save(new User(null, userDTO.name(), userDTO.email(), userDTO.password()));
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(this.userService.save(new User(null, userDTO.name(), userDTO.email(), userDTO.password())));
     }
 
 }
