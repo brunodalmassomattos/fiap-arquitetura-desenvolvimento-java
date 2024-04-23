@@ -1,6 +1,6 @@
 ## Atividade  ##
 
-Você foi contratado para cirar um API de Rede Social que permita ao úsuario criar posts, curtir posts e comentar neles. Sua tarefa é desenvolver essa API utilizando o Spring em Java.
+Você foi contratado para criar um API de Rede Social que permita ao usuário criar posts, curtir posts e comentar neles. Sua tarefa é desenvolver essa API utilizando o Spring em Java.
 
 #### Requisitos: ####
 
