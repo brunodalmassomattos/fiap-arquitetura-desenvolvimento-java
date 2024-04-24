@@ -15,16 +15,14 @@ public record TagDTO(String postId, List<String> tags) implements Serializable {
             return Collections.emptyList();
         }
 
-        return tags.stream()
-                .map(item -> {
-                    return Tag.builder()
-                            .tag(item)
-                            .posts(Post.builder()
-                                    .id(postId)
-                                    .build())
-                            .build();
-                })
-                .collect(Collectors.toList());
+        return tags.stream().map(item -> {
+            return Tag.builder()
+                    .tag(item)
+                    .posts(Post.builder()
+                            .id(postId)
+                            .build())
+                    .build();
+        }).collect(Collectors.toList());
     }
 
 }

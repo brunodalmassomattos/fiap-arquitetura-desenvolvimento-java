@@ -5,7 +5,7 @@ import br.com.fiap.apiredesocial.domain.user.User;
 
 import java.util.List;
 
-public record PostDTO(String title, String content, String userId, List<String> tags) {
+public record PostDTO(String id, String title, String content, String userId, List<String> tags) {
 
     public static Post toPost(PostDTO postDTO) {
         return Post.builder()
