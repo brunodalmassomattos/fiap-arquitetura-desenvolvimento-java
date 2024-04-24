@@ -25,9 +25,15 @@ public class PostService {
         List<Tag> saveTag = new ArrayList<>();
         if (postDTO.tags() != null || !postDTO.tags().isEmpty()) {
             saveTag = this.tagService.save(TagDTO.toTag(postDTO.tags(), savePost.getId()));
-
         }
 
-        return new PostDTO(savePost.getId(), savePost.getTitle(), savePost.getContent(), savePost.getId(), saveTag.stream().map(Tag::getTag).collect(Collectors.toList()));
+        return new PostDTO(savePost.getId(), savePost.getTitle(), savePost.getContent(), postDTO.userId(), saveTag.stream().map(Tag::getTag).collect(Collectors.toList()));
+    }
+
+    public void addLike(String postId) {
+        Post post = this.postRepository.findById(postId).orElseThrow(() -> new RuntimeException("Post not found"));
+        post.setLikes(post.getLikes() + 1);
+
+        this.postRepository.save(post);
     }
 }
