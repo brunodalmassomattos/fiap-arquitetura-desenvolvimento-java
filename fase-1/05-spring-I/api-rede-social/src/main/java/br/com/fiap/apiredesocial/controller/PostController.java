@@ -23,20 +23,8 @@ public class PostController {
     private PostService postService;
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody PostDTO postDTO) {
-        Post post = Post.builder()
-                .title(postDTO.title())
-                .content(postDTO.content())
-                .like(0)
-                .user(User.builder()
-                        .id(postDTO.userId())
-                        .build())
-                .tags(PostDTO.toTagPost(postDTO.tags()))
-                .build();
-
-        this.postService.create(post);
-
-        return null;
+    public ResponseEntity<PostDTO> create(@RequestBody PostDTO postDTO) {
+        return ResponseEntity.ok(postService.create(postDTO));
     }
 
 }
