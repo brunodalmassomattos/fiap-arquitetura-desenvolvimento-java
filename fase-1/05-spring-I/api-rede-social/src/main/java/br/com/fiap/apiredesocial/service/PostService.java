@@ -1,5 +1,6 @@
 package br.com.fiap.apiredesocial.service;
 
+import br.com.fiap.apiredesocial.domain.post.Comment;
 import br.com.fiap.apiredesocial.domain.post.Post;
 import br.com.fiap.apiredesocial.domain.post.Tag;
 import br.com.fiap.apiredesocial.dto.PostDTO;
@@ -18,6 +19,7 @@ public class PostService {
 
     private PostRepository postRepository;
     private TagService tagService;
+    private CommentService commentService;
 
     public PostDTO create(PostDTO postDTO) {
         Post savePost = this.postRepository.save(PostDTO.toPost(postDTO));
@@ -35,5 +37,14 @@ public class PostService {
         post.setLikes(post.getLikes() + 1);
 
         this.postRepository.save(post);
+    }
+
+    public void addComment(String postIdRequest, String commentRequest) {
+        var post = this.postRepository.findById(postIdRequest).orElseThrow(() -> new RuntimeException("Post not found"));
+        var commentSave = new Comment();
+        commentSave.setComment(commentRequest);
+        commentSave.setPosts(post);
+
+        this.commentService.save(commentSave);
     }
 }

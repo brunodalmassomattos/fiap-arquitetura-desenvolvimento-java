@@ -18,9 +18,15 @@ public class PostController {
         return ResponseEntity.ok(postService.create(postDTO));
     }
 
-    @GetMapping("/like/{postId}")
+    @PostMapping("/like/{postId}")
     public ResponseEntity<Void> like(@PathVariable("postId") String postId) {
         this.postService.addLike(postId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/comment/{postId}")
+    public ResponseEntity<Void> comment(@PathVariable("postId") String postId, @RequestBody String comment) {
+        this.postService.addComment(postId, comment);
         return ResponseEntity.ok().build();
     }
 
