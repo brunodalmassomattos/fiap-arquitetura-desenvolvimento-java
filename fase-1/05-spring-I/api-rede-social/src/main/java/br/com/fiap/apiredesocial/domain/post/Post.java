@@ -7,9 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Table(name = "posts")
 @Data
@@ -23,16 +20,13 @@ public class Post {
     private String id;
     private String title;
     private String content;
-    private Integer like;
+    private int likes;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post")
-    private List<Tag> tags = new ArrayList<>();
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post")
-    private List<Comment> comments = new ArrayList<>();
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post")
+//    private List<Comment> comments = new ArrayList<>();
 
 }
