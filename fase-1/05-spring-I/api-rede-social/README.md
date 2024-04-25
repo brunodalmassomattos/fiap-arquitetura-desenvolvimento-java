@@ -8,7 +8,7 @@ Você foi contratado para criar um API de Rede Social que permita ao usuário cr
 - [x] 2 - A API deve permitir o cadastro de usuários, incluindo informações como nome, e-mail e senha.
 - [x] 3 - Os usuários devem ser capazes de criar posts, que devem incluir um título, conteúdo e uma lista de tags.
 - [x] 4 - Os usuários devem poder curtir os posts de outros usuários.
-- [ ] 5 - Os usuários devem poder comentar nos posts de outros usuários.
+- [x] 5 - Os usuários devem poder comentar nos posts de outros usuários.
 - [ ] 6 - A API deve permitir a listagem de todos os posts, com as informações dos usuários que os criaram, número de curtidas e comentários.
 - [ ] 7 - A API deve fornecer endpoints para buscar posts por tags.
 - [x] 8 - A API deve ser segura, exigindo autenticação para realizar operações de criação de posts, curtidas e comentários.
