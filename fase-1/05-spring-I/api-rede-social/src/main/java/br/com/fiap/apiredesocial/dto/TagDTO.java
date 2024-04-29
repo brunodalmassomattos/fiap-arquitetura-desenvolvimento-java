@@ -7,9 +7,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public record TagDTO(String postId, List<String> tags) implements Serializable {
+public record TagDTO(String tagId, String tag) implements Serializable {
 
-    public static List<Tag> toTag(List<String> tags, String postId) {
+    public static List<Tag> toTag(String tagId, List<String> tags) {
         if (tags == null) {
             return Collections.emptyList();
         }
@@ -17,7 +17,6 @@ public record TagDTO(String postId, List<String> tags) implements Serializable {
         return tags.stream().map(item -> {
             return Tag.builder()
                     .tag(item)
-
                     .build();
         }).collect(Collectors.toList());
     }
@@ -28,7 +27,7 @@ public record TagDTO(String postId, List<String> tags) implements Serializable {
         }
 
         return tags.stream().map(item -> {
-            return new TagDTO(null, Collections.singletonList(item.getTag()));
+            return new TagDTO(item.getId(), item.getTag());
         }).collect(Collectors.toList());
     }
 

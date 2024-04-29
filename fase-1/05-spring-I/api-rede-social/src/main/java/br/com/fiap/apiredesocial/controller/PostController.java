@@ -1,5 +1,6 @@
 package br.com.fiap.apiredesocial.controller;
 
+import br.com.fiap.apiredesocial.dto.AllPostDTO;
 import br.com.fiap.apiredesocial.dto.PostDTO;
 import br.com.fiap.apiredesocial.service.PostService;
 import lombok.AllArgsConstructor;
@@ -17,9 +18,8 @@ public class PostController {
     private PostService postService;
 
     @GetMapping
-    public ResponseEntity<List<PostDTO>> getAll() {
-        this.postService.getAll();
-        return null;
+    public ResponseEntity<List<AllPostDTO>> getAll() {
+        return ResponseEntity.ok(this.postService.getAll());
     }
 
     @PostMapping
