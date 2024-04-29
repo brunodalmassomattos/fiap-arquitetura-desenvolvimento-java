@@ -22,8 +22,6 @@ public class Tag {
     private String id;
     private String tag;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id", nullable = false)
-    private Post posts;
-
+    @ManyToMany(mappedBy = "tags")
+    private List<Post> posts = new ArrayList<>();
 }
