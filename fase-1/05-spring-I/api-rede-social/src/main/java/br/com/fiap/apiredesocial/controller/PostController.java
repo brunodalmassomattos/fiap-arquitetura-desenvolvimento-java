@@ -3,8 +3,11 @@ package br.com.fiap.apiredesocial.controller;
 import br.com.fiap.apiredesocial.dto.PostDTO;
 import br.com.fiap.apiredesocial.service.PostService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/post")
@@ -13,9 +16,16 @@ public class PostController {
 
     private PostService postService;
 
+    @GetMapping
+    public ResponseEntity<List<PostDTO>> getAll() {
+        this.postService.getAll();
+        return null;
+    }
+
     @PostMapping
     public ResponseEntity<PostDTO> create(@RequestBody PostDTO postDTO) {
-        return ResponseEntity.ok(postService.create(postDTO));
+        PostDTO post = postService.create(postDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(post);
     }
 
     @PostMapping("/like/{postId}")

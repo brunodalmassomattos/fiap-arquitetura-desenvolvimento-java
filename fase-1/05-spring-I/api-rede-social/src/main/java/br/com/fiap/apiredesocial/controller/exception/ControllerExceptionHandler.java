@@ -1,6 +1,7 @@
 package br.com.fiap.apiredesocial.controller.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -38,6 +39,20 @@ public class ControllerExceptionHandler {
         validateError.setPath(request.getRequestURI());
 
         exception.getBindingResult().getFieldErrors().forEach(item -> validateError.addMessage(item.getField(), item.getDefaultMessage()));
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validateError);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<StandardError> validation(DataIntegrityViolationException exception,
+                                                    HttpServletRequest request) {
+        var validateError = new ValidateError();
+
+        validateError.setTimeStamp(Instant.now());
+        validateError.setStatus(HttpStatus.BAD_REQUEST.value());
+        validateError.setError("Entity duplicaded");
+        validateError.setMessage(exception.getMessage());
+        validateError.setPath(request.getRequestURI());
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validateError);
     }
