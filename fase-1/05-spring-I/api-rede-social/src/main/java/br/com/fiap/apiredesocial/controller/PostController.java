@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,8 +19,13 @@ public class PostController {
     private PostService postService;
 
     @GetMapping
-    public ResponseEntity<List<AllPostDTO>> getAll() {
+    public ResponseEntity<List<AllPostDTO>> all() {
         return ResponseEntity.ok(this.postService.getAll());
+    }
+
+    @GetMapping("/tags")
+    public ResponseEntity<List<AllPostDTO>> all(@RequestBody List<String> tags) {
+        return ResponseEntity.ok(this.postService.getPostsByTags(tags));
     }
 
     @PostMapping

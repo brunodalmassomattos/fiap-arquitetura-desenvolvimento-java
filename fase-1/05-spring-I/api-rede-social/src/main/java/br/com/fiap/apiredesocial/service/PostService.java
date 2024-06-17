@@ -2,6 +2,7 @@ package br.com.fiap.apiredesocial.service;
 
 import br.com.fiap.apiredesocial.domain.post.Comment;
 import br.com.fiap.apiredesocial.domain.post.Post;
+import br.com.fiap.apiredesocial.domain.post.Tag;
 import br.com.fiap.apiredesocial.dto.AllPostDTO;
 import br.com.fiap.apiredesocial.dto.PostDTO;
 import br.com.fiap.apiredesocial.repositories.PostRepository;
@@ -43,5 +44,9 @@ public class PostService {
 
     public List<AllPostDTO> getAll() {
         return AllPostDTO.fromGetAll(this.postRepository.findAll());
+    }
+
+    public List<AllPostDTO> getPostsByTags(List<String> tags) {
+        return AllPostDTO.toAllPostDTO(this.tagService.getAllPost(tags));
     }
 }

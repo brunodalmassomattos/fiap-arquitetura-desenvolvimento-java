@@ -6,10 +6,7 @@ import br.com.fiap.apiredesocial.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -22,5 +19,6 @@ public class UserController {
     public ResponseEntity<UserDTO> user(@Valid @RequestBody UserDTO userDTO) {
         return ResponseEntity.ok(this.userService.save(new User(null, userDTO.name(), userDTO.email(), userDTO.password())));
     }
+
 
 }

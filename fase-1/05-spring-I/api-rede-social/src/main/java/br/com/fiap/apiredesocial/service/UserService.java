@@ -17,4 +17,7 @@ public class UserService {
         return new UserDTO(save.getId(), save.getName(), save.getEmail(), save.getPassword());
     }
 
+    public void update(User user) {
+
+    }
 }
